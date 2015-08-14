@@ -6,6 +6,8 @@ import ChannelsStore from '../stores/ChannelsStore'
 
 import ChannelList from './ChannelList'
 
+import connectToStores from 'alt/utils/connectToStores'
+
 class App extends Component {
   createChannel = () => {
     const channelName = prompt('What is the channel?')
@@ -14,7 +16,7 @@ class App extends Component {
   }
 
   render() {
-    const { channels } = ChannelsStore.getState()
+    const { channels } = this.props
 
     return (
       <div>
@@ -39,4 +41,12 @@ class App extends Component {
   }
 }
 
-export default App
+export default connectToStores({
+  getStores() {
+    return [ChannelsStore]
+  },
+
+  getPropsFromStores() {
+    return ChannelsStore.getState()
+  },
+}, App)
