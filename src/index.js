@@ -4,6 +4,7 @@ import { history } from 'react-router/lib/HashHistory'
 import App from './components/App'
 import Channel from './components/Channel'
 
+
 React.render((
   <Router history={history}>
     <Route path="/" component={App}>
